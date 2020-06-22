@@ -4,22 +4,27 @@ console.log('it works!');
 let links = [
     {
         title:"World news",
-        url: "https://world.news",
+        url: "https://world/news",
         author: "Natasha"
     },
     {
         title:"My blog",
-        url: "https://my.first.blog",
+        url: "https://my/first/blog",
         author: "Vallerie"
     },
     {
         title:"How to stay healthy",
-        url: "https://how.to.stay.healthy",
+        url: "https://how/to/stay/healthy",
         author: "Ally"
     },
     {
         title:"Learning languages",
-        url: "https://learning.languages",
+        url: "https://learning/languages",
+        author: "Ken"
+    },
+    {
+        title:"Travelling",
+        url: "https://travel/travelling",
         author: "Ken"
     }
 ];
@@ -46,10 +51,11 @@ Author: ${links[i].author}`;
     }
 };
 
+// This function will add a new social news in the list of links
 const addNewLinks = () => {
     const addNewTitle = prompt("Enter a new title: ");
     const addNewUrl = prompt("Enter a new url:");
-    const addNewAuthor = prompt("Enter a new autor: ");
+    const addNewAuthor = prompt("Enter a new author: ");
     let newLink = {
         title: addNewTitle,
         url: addNewUrl,
@@ -67,4 +73,14 @@ switch (linkChoice) {
     case 2:
         addNewLinks();
         break;
-};
+    case 3:
+        const linkDeleted = links.pop();
+           alert(`We deleted the last link: ${linkDeleted.title}`);
+        break;
+    case 5:
+        let showIndex = Number(prompt("Enter a number between 1 to 4 of to show a links you want"));
+        if (showIndex >= 1 && showIndex <=  4) {
+            alert(links[0].title);
+        }
+        break;
+    };
