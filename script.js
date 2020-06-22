@@ -66,21 +66,25 @@ const addNewLinks = () => {
 }
 
 // Run the program till the user quite
-switch (linkChoice) {
-    case 1:
-        listOfLinks();
-        break;
-    case 2:
-        addNewLinks();
-        break;
-    case 3:
-        const linkDeleted = links.pop();
-           alert(`We deleted the last link: ${linkDeleted.title}`);
-        break;
-    case 5:
-        let showIndex = Number(prompt("Enter a number between 1 to 4 of to show a links you want"));
-        if (showIndex >= 1 && showIndex <=  4) {
-            alert(links[0].title);
-        }
-        break;
-    };
+    switch (linkChoice) {
+        case 1:
+            listOfLinks();
+            break;
+        case 2:
+            addNewLinks();
+            break;
+        case 3:
+            const linkDeleted = links.pop();
+            alert(`We deleted the last link: ${linkDeleted.title}`);
+            break;
+        case 5:
+            let showIndex = Number(prompt("Enter a number between 1 to 4 of to show a links you want"));
+                if (showIndex >= 1 && showIndex <=  4) {
+                    alert(links[showIndex].title)
+                }
+                linkChoice = Number(prompt(startMenu));  
+            break;
+            default:     
+    }
+// Here is the ends of the program
+alert(`Thank you for using this program`);
