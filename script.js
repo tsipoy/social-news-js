@@ -32,9 +32,10 @@ let links = [
 let startMenu = `Welcome to the new social news program!
     Choose (1) to show the list of links.
     Choose (2) to add a new link.
-    Choose (3) to remove an existing link.
-    Choose (4) to quit the program.
-    Choose (5) to show the list of links displays the index (rank).
+    Choose (3) to remove the last link which you have just entered.
+    Choose (4) to remove an existing link.
+    Choose (5) to quit the program.
+    Choose (6) to show the list of links displays the index (rank).
 `;
 
 let linkChoice = Number(prompt(startMenu));
@@ -70,7 +71,7 @@ const addNewLinks = () => {
 
 // This function will show the index 
 const index = () => {
-    let showIndex = Number(prompt("Enter a number from 0 to 4 of to show a links you want"));
+    let showIndex = Number(prompt("Enter a number from 0 to 4 of to show a links you want to show"));
     switch (showIndex) {
         case 0:
             alert(`${links[0].title} (${links[0].url}) Author: ${links[0].author}`);
@@ -105,11 +106,17 @@ while (linkChoice !== 4) {
             const linkDeleted = links.pop();
             alert(`We deleted the last link: ${linkDeleted.title}`);
             break;
-        case 5: 
+        case 4:
+            let removeIndex = Number(prompt("Enter the index of the link to be removed (0 to 4)"));
+            let deletedIndex = links.splice(removeIndex--, 1);
+			console.log(deletedIndex);
+            alert(`You just deleted: ${deletedIndex[0].title}`);
+            break;
+        case 6: 
             index(); 
             break;
         default:     
-        alert('Please enter a correct choice. (1,2,3,4)');
+        alert('Please enter a correct choice. (1,2,3,4,5,6)');
     }
   linkChoice = Number(prompt(startMenu));
 }
