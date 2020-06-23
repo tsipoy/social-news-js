@@ -29,7 +29,7 @@ let links = [
     }
 ];
 
-const startMenu = `Welcome to the new social news program!
+let startMenu = `Welcome to the new social news program!
     Choose (1) to show the list of links.
     Choose (2) to add a new link.
     Choose (3) to remove an existing link.
@@ -53,9 +53,12 @@ Author: ${links[i].author}`;
 
 // This function will add a new social news in the list of links
 const addNewLinks = () => {
-    const addNewTitle = prompt("Enter a new title: ");
-    const addNewUrl = prompt("Enter a new url:");
-    const addNewAuthor = prompt("Enter a new author: ");
+    let addNewTitle = prompt("Enter a new title: ");
+    let addNewUrl = prompt("Enter a new url:");
+    let addNewAuthor = prompt("Enter a new author: ");
+    if (!addNewUrl.startsWith("http://")) {
+        addNewUrl = `http://${addNewUrl}`;
+    }
     let newLink = {
         title: addNewTitle,
         url: addNewUrl,
@@ -65,7 +68,32 @@ const addNewLinks = () => {
     return;
 }
 
+// This function will show the index 
+const index = () => {
+    let showIndex = Number(prompt("Enter a number from 0 to 4 of to show a links you want"));
+    switch (showIndex) {
+        case 0:
+            alert(`${links[0].title} (${links[0].url}) Author: ${links[0].author}`);
+            break;
+        case 1:
+            alert(`${links[1].title} (${links[1].url}) Author: ${links[1].author}`);
+            break;
+        case 2:
+            alert(`${links[2].title} (${links[2].url}) Author: ${links[2].author}`);
+            break;
+        case 3:
+            alert(`${links[3].title} (${links[3].url}) Author: ${links[3].author}`);
+            break;
+        case 4:
+            alert(`${links[4].title} (${links[4].url}) Author: ${links[4].author}`);
+            break;
+        default:
+            alert("Don't be funny guys! That's not valid! hahaha!")
+    }
+}
+
 // Run the program till the user quite
+while (linkChoice !== 4) {
     switch (linkChoice) {
         case 1:
             listOfLinks();
@@ -77,14 +105,13 @@ const addNewLinks = () => {
             const linkDeleted = links.pop();
             alert(`We deleted the last link: ${linkDeleted.title}`);
             break;
-        case 5:
-            let showIndex = Number(prompt("Enter a number between 1 to 4 of to show a links you want"));
-                if (showIndex >= 1 && showIndex <=  4) {
-                    alert(links[showIndex].title)
-                }
-                linkChoice = Number(prompt(startMenu));  
+        case 5: 
+            index(); 
             break;
-            default:     
+        default:     
+        alert('Please enter a correct choice. (1,2,3,4)');
     }
+  linkChoice = Number(prompt(startMenu));
+}
 // Here is the ends of the program
 alert(`Thank you for using this program`);
